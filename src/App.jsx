@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import axios from "axios";
+import Weather from "./components/Weather";
 
 function App() {
   /* estado */
@@ -10,8 +11,6 @@ function App() {
   const success = (pos) => {
     const lat = pos.coords.latitude;
     const lon = pos.coords.longitude;
-
-    
 
     const API_KEY = "8b347c22d8ba681af6bc0e53cbf63b65";
 
@@ -28,8 +27,8 @@ function App() {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
   return (
-    <main className="bg-black min-h-screen text-white font-lato">
-      <h2>Weather</h2>
+    <main className="bg-black min-h-screen text-white font-lato flex justify-center items-center">
+      <Weather weather={weather} />
     </main>
   );
 }
