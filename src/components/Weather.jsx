@@ -22,13 +22,13 @@ const Weather = ({ weather }) => {
         <section className="bg-white/60 p-2 rounded-2xl">
           <article>
             <div>
-              <img src={"/images/viento.png"} alt="" />
+              <img src={"/images/wind.png"} alt="" />
             </div>
             <span>{weather?.wind.speed} m/s</span>
           </article>
           <article>
             <div>
-              <img src={"/images/humedad.png"} alt="" />
+              <img src={"/images/humidity.png"} alt="" />
             </div>
             <span>{weather?.main.humidity}%</span>
           </article>
