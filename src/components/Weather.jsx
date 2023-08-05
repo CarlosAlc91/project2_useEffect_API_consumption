@@ -32,13 +32,16 @@ const Weather = ({ weather }) => {
 
   return (
     <section className="text-center">
-      I will get a 40,000 USD job
-      <h2>{weather?.name}</h2>
-      <section className="grid gap-4 sm:grid-cols-[auto_auto]">
+      <h2 className="text-2xl mb-5 text-black font-semibold">
+        {weather?.name}
+      </h2>
+      <section className="grid gap-4 sm:grid-cols-[auto_auto] text-black">
         {/* section superior */}
-        <section className="bg-white/60 p-2 rounded-2xl grid grid-cols-2 items-center">
-          <h4 className="col-span-2">{weather?.weather[0].description}</h4>
-          <span className="text-4xl">
+        <section className="bg-white/40 p-2 rounded-2xl grid grid-cols-2 items-center  font-semibold">
+          <h4 className="col-span-2 text-[#3E3E3E] text-lg pt-3 capitalize">
+            {weather?.weather[0].description}
+          </h4>
+          <span className="text-[50px]">
             {tempConvertion}°{tempConvertionIcon}
           </span>
           <div>
@@ -49,19 +52,21 @@ const Weather = ({ weather }) => {
           </div>
         </section>
         {/* section inferior */}
-        <section className="bg-white/60 p-2 py-4 rounded-2xl grid grid-cols-3 items-center sm:grid-cols-1">
+        <section className="bg-white/40 p-2 py-8 rounded-2xl grid grid-cols-3 items-center sm:grid-cols-1 font-semibold">
           <article className="flex gap-2 items-center">
             <div className="w-[22px]">
               <img src={"/images/wind.png"} alt="" />
             </div>
             <span>{weather?.wind.speed} m/s</span>
           </article>
+          <div className="border-l border-gray-300 h-full my-4 sm:my-0 sm:w-0 sm:h-0 sm:border-t sm:border-b"></div>
           <article className="flex gap-2 items-center">
             <div className="w-[22px]">
               <img src={"/images/humidity.png"} alt="" />
             </div>
             <span>{weather?.main.humidity}%</span>
           </article>
+          <div className="border-l border-gray-300 h-full my-4 sm:my-0 sm:w-0 sm:h-0 sm:border-t sm:border-b"></div>
           <article className="flex gap-2 items-center">
             <div className="w-[22px]">
               <img src={"/images/pressure.png"} alt="" />
@@ -70,8 +75,11 @@ const Weather = ({ weather }) => {
           </article>
         </section>
       </section>
-      <button onClick={handlerUnitChange} className="mt-4 bg-white text-black">
-        F / c
+      <button
+        onClick={handlerUnitChange}
+        className="mt-4 bg-white text-[#4580BA] rounded-[20px] px-6 py-1 "
+      >
+        Change to F°
       </button>
     </section>
   );

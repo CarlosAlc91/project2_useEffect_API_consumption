@@ -27,7 +27,7 @@ function App() {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
   return (
-    <main className="bg-black min-h-screen text-white font-lato flex justify-center items-center px-4">
+    <main className="bg-bg1 bg-center bg-cover min-h-screen text-white font-lato flex justify-center items-center px-4">
       <Weather weather={weather} />
     </main>
   );
