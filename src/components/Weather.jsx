@@ -14,6 +14,7 @@ const Weather = ({ weather, onCitySearch }) => {
     const converter = (temp - 272.15).toFixed(1);
     return converter;
   };
+  /* lksdjflsfj */
 
   /* funcion de k a f */
   const kelvinToFahrenheit = (tempF) => {
