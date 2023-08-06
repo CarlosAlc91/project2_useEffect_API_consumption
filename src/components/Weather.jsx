@@ -64,12 +64,12 @@ const Weather = ({ weather, onCitySearch }) => {
       {/* input */}
       <form
         onSubmit={handlerCitySearch}
-        className="flex rounded-xl overflow-hidden max-w-max mx-auto mb-5"
+        className="flex rounded-xl overflow-hidden max-w-max mx-auto mb-5 text-xl "
       >
         <input
           id="cityName"
           placeholder="Enter your city"
-          className="text-black pl-2"
+          className="text-black pl-2 outline-none border-none"
           type="text"
         />
         <button className="bg-white/40 px-4 py-1">Search</button>
@@ -92,7 +92,7 @@ const Weather = ({ weather, onCitySearch }) => {
           </div>
         </section>
         {/* section inferior */}
-        <section className="bg-white/40 p-2 py-8 rounded-2xl grid grid-cols-3 items-center sm:grid-cols-1 font-semibold">
+        <section className="bg-white/40 p-2 py-8 rounded-2xl grid grid-cols-3 items-center sm:grid-cols-1 font-semibold text-lg">
           <article className="flex gap-2 items-center">
             <div className="w-[22px]">
               <img src={"/images/wind.png"} alt="" />
