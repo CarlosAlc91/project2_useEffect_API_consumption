@@ -24,6 +24,7 @@ function App() {
       .catch((err) => console.log(err));
   };
 
+  /* obtener las ciudades */
   const handlerCitySearch = (cityName) => {
     const API_KEY = "8b347c22d8ba681af6bc0e53cbf63b65";
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;

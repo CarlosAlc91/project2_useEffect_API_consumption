@@ -50,6 +50,7 @@ const Weather = ({ weather, onCitySearch }) => {
 
   const speedConvertionn = isMeter ? "m/s" : "MPH";
 
+  /* handler para input */
   const handlerCitySearch = (e) => {
     e.preventDefault();
     const cityName = e.target.cityName.value;
