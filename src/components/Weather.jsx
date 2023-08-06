@@ -2,9 +2,10 @@
 
 import { useState } from "react";
 
-const Weather = ({ weather }) => {
+const Weather = ({ weather, onCitySearch }) => {
   /* estado */
   const [isCelsius, setIsCelsius] = useState(true);
+  const [isMeter, setIsMeter] = useState(true);
   /* console.log({ weather }); */
 
   /* funcion de k a c */
@@ -20,16 +21,19 @@ const Weather = ({ weather }) => {
     return converter2;
   };
 
-  const handlerUnitChange = () => {
-    setIsCelsius(!isCelsius);
+  const metersToMiles = (distance) => {
+    const converter = (distance * 2.23).toFixed(1);
+    return converter;
   };
 
-  const handlerCitySearch = (e) => {
-    e.preventDefault();
-    const cityName = weather.sys.country;
+  /* const milesToMeters = (distanceM) => {
+    const converter3 = (distanceM / 2.23).toFixed(1);
+    return converter3;
+  }; */
 
-    const API_KEY = "8b347c22d8ba681af6bc0e53cbf63b65";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`;
+  const handlerUnitChange = () => {
+    setIsCelsius(!isCelsius);
+    setIsMeter(!isMeter);
   };
 
   const tempConvertion = isCelsius
@@ -39,17 +43,30 @@ const Weather = ({ weather }) => {
   const tempConvertionIcon = isCelsius ? "C" : "F";
   const tempConvertionButton = isCelsius ? "Change to F°" : "Change to C°";
 
+  const speedConvertion = isMeter
+    ? metersToMiles(weather?.wind.speed)
+    : weather?.wind.speed;
+
+  const speedConvertionn = isMeter ? "m/s" : "MPH";
+
+  const handlerCitySearch = (e) => {
+    e.preventDefault();
+    const cityName = e.target.cityName.value;
+    onCitySearch(cityName);
+  };
+
   return (
     <section className="text-center">
-      <h2 className="text-3xl mb-5 text-black font-semibold">
+      <h2 className="text-3xl mb-16 text-black font-semibold">
         {weather?.name}
       </h2>
       {/* input */}
       <form
         onSubmit={handlerCitySearch}
-        className="flex rounded-xl overflow-hidden max-w-max mx-auto"
+        className="flex rounded-xl overflow-hidden max-w-max mx-auto mb-5"
       >
         <input
+          id="cityName"
           placeholder="Enter your city"
           className="text-black pl-2"
           type="text"
@@ -67,7 +84,7 @@ const Weather = ({ weather }) => {
           </span>
           <div>
             <img
-              className={handler}
+              className={handlerUnitChange}
               src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@4x.png`}
               alt=""
             />
@@ -79,7 +96,9 @@ const Weather = ({ weather }) => {
             <div className="w-[22px]">
               <img src={"/images/wind.png"} alt="" />
             </div>
-            <span>{weather?.wind.speed} m/s</span>
+            <span>
+              {speedConvertion} {speedConvertionn}
+            </span>
           </article>
 
           <article className="flex gap-2 items-center">
