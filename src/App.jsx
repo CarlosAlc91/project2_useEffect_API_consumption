@@ -22,6 +22,9 @@ function App() {
       .then(({ data }) => setWeather(data))
       .catch((err) => console.log(err));
   };
+
+ 
+
   /* arreglo vacio para que solo dse ejecute en el primer render y naada mas */
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(success);
